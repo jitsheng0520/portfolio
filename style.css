@@ -199,7 +199,7 @@ h2::after {
   padding: 2rem 2rem 2.5rem; 
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
+  scrollbar-width: auto;
   scrollbar-color: #667eea #e2e8f0;
 }
 
