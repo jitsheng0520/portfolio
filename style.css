@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+img {
+  max-width: 100%;
+  height: auto;
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   line-height: 1.6;
@@ -130,7 +135,7 @@ h2::after {
   border-radius: 2px;
 }
 
-/* About Section */
+/* ── About ── */
 .about-content {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -156,6 +161,15 @@ h2::after {
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
 
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  border-radius: 50%;
+  display: block ;
+}
+
 .about-text {
   font-size: 1.2rem;
   line-height: 1.8;
@@ -178,7 +192,290 @@ h2::after {
   font-weight: 500;
 }
 
-/* Education Section */
+/* ── Projects ── */
+.projects-scroll-wrapper {
+  overflow-x: auto;
+  /* Added extra vertical padding so the 'hover' transform doesn't get cut off */
+  padding: 2rem 2rem 2.5rem; 
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #667eea #e2e8f0;
+}
+
+.projects-grid {
+  display: grid;
+  /* FIX: Forces all items onto one single row */
+  grid-auto-flow: column;
+  /* FIX: Sets the width of each project card */
+  grid-auto-columns: minmax(350px, 1fr);
+  gap: 2rem;
+}
+
+.project {
+  background: white;
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  /* FIX: Makes the card snap to the start of the container when scrolling */
+  scroll-snap-align: start;
+}
+
+/* Rest of your project styles remain the same */
+.project:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+}
+
+.project h3 {
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.project p {
+  color: #718096;
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+
+.project a {
+  display: inline-block;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  color: white;
+  text-decoration: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.project a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Custom Scrollbar Styling (Keep this) */
+.projects-scroll-wrapper::-webkit-scrollbar {
+  height: 8px; /* Slightly thicker for better visibility */
+}
+
+.projects-scroll-wrapper::-webkit-scrollbar-track {
+  background: #e2e8f0;
+  border-radius: 99px;
+}
+
+.projects-scroll-wrapper::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  border-radius: 99px;
+}
+
+
+.project-img {
+  width: 100%;           /* Makes image fill the card width */
+  height: 200px;         /* Sets a consistent height for all project photos */
+  object-fit: cover;     /* Crops image to fill the area without stretching */
+  border-radius: 10px;   /* Matches the rounded corners of your cards */
+  margin-bottom: 1.5rem; /* Creates space between the image and the text */
+  border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+/* PDF poster button style */
+.project-links a.btn-pdf {
+  background: linear-gradient(45deg, #e05f3a, #f6a623);
+}
+
+.project-links a.btn-pdf:hover {
+  box-shadow: 0 8px 20px rgba(224, 95, 58, 0.3);
+}
+
+.scroll-hint {
+  text-align: center;
+  color: #a0aec0;
+  font-size: 0.88rem;
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+/* Project-link style*/
+.project-links {
+  display: flex;         /* Places items side-by-side */
+  flex-wrap: wrap;      /* Ensures they wrap to the next line on mobile */
+  gap: 1rem;            /* The exact gap between the buttons */
+  
+}
+
+/* Optional: If you want the buttons to look consistent when they wrap */
+.project-links a {
+  flex-shrink: 0;
+  margin-bottom: 0;     /* 'gap' handles the spacing instead of margins */
+}
+
+/* ── Work Experience ── */
+.experience-timeline {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.experience-item {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid rgba(102, 126, 234, 0.12);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.experience-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(102, 126, 234, 0.18);
+}
+
+.experience-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.8rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.experience-period {
+  color: white;
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+}
+
+.experience-badge {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 500;
+  padding: 0.3rem 0.9rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.35);
+  backdrop-filter: blur(6px);
+}
+
+.experience-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  padding: 1.8rem;
+  align-items: start;
+}
+
+.experience-company {
+  color: #2d3748;
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.experience-duties {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.experience-duties li {
+  color: #4a5568;
+  font-size: 0.97rem;
+  line-height: 1.65;
+  padding-left: 1.4rem;
+  position: relative;
+}
+
+.experience-duties li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #667eea, #764ba2);
+  flex-shrink: 0;
+}
+
+/* Company photo */
+.experience-photo-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-photo {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  border: 3px solid rgba(102, 126, 234, 0.2);
+  transition: all 0.3s ease;
+}
+
+.company-photo:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.25);
+}
+
+/* ── Contact ── */
+.contact-content {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  min-width: 200px;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+}
+
+.contact-item h4 {
+  color: #2d3748;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.contact-item a {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer {
+  background: #2d3748;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* ── Education ── */
 .education-timeline {
   max-width: 800px;
   margin: 0 auto;
@@ -268,201 +565,7 @@ h2::after {
   line-height: 1.6;
 }
 
-/* Gallery Section */
-.gallery-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 2rem 0;
-}
-
-.gallery-scroll {
-  display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  padding: 1rem 0;
-  scrollbar-width: thin;
-  scrollbar-color: #667eea #f0f4ff;
-}
-
-.gallery-scroll::-webkit-scrollbar {
-  height: 8px;
-}
-
-.gallery-scroll::-webkit-scrollbar-track {
-  background: #f0f4ff;
-  border-radius: 10px;
-}
-
-.gallery-scroll::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  border-radius: 10px;
-}
-
-.gallery-item {
-  flex: 0 0 auto;
-  width: 350px;
-  height: 450px;
-  position: relative;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-  background: linear-gradient(135deg, #667eea, #764ba2);
-}
-
-.gallery-item:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.4);
-}
-
-.gallery-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover img {
-  transform: scale(1.05);
-}
-
-.gallery-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-  color: white;
-  padding: 2rem 1.5rem 1.5rem;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
-}
-
-.gallery-item:hover .gallery-caption {
-  transform: translateY(0);
-}
-
-.gallery-caption h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.5rem;
-}
-
-.gallery-caption p {
-  font-size: 0.9rem;
-  opacity: 0.9;
-}
-
-.gallery-number {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background: rgba(255,255,255,0.9);
-  color: #667eea;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 1.1rem;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-/* Projects Section */
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 2rem;
-}
-
-.project {
-  background: white;
-  padding: 2rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  border: 1px solid rgba(102, 126, 234, 0.1);
-}
-
-.project:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
-}
-
-.project h3 {
-  color: #2d3748;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-}
-
-.project p {
-  color: #718096;
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-}
-
-.project a {
-  display: inline-block;
-  background: linear-gradient(45deg, #667eea, #764ba2);
-  color: white;
-  text-decoration: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
-
-.project a:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
-}
-
-/* Contact Section */
-.contact-content {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.contact-info {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-.contact-item {
-  background: white;
-  padding: 1.5rem;
-  border-radius: 15px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-  transition: all 0.3s ease;
-  min-width: 200px;
-}
-
-.contact-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
-}
-
-.contact-item a {
-  color: #667eea;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-/* Footer */
-footer {
-  background: #2d3748;
-  color: white;
-  text-align: center;
-  padding: 2rem;
-}
-
-/* Floating Shapes */
+/* ── Floating Shapes ── */
 .floating-shapes {
   position: fixed;
   top: 0;
@@ -505,32 +608,30 @@ footer {
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-20px);
-  }
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
 }
 
-/* Smooth Scrolling */
+/* ── Smooth Scroll ── */
 html {
   scroll-behavior: smooth;
 }
 
-/* Responsive Design */
+/* ── Responsive ── */
 @media (max-width: 768px) {
   h1 {
     font-size: 2.5rem;
   }
-  
+
   .subtitle {
     font-size: 1.2rem;
   }
 
   nav a {
-    display: block;
-    margin: 0.5rem 0;
+    display: inline-block;
+    margin: 0.3rem 0.4rem;
+    font-size: 0.95rem;
+    padding: 0.6rem 1rem;
   }
 
   .about-content {
@@ -542,6 +643,20 @@ html {
     width: 200px;
     height: 200px;
     font-size: 3rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  section {
+    padding: 3rem 1rem;
   }
 
   .education-item {
@@ -570,21 +685,18 @@ html {
     height: 120px;
   }
 
-  .gallery-item {
-    width: 280px;
-    height: 380px;
-  }
-
-  .projects-grid {
+  .experience-content {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
-  .contact-info {
+  .experience-header {
     flex-direction: column;
-    gap: 1rem;
+    align-items: flex-start;
+    gap: 0.5rem;
   }
 
-  section {
-    padding: 3rem 1rem;
+  .company-photo {
+    height: 120px;
   }
 }
