@@ -469,7 +469,7 @@ h2::after {
 /* ── Contact ── */
 .contact-content {
   text-align: center;
-  max-width: 600px;
+  max-width: 800px; /* 1. INCREASED from 600px to give the items room */
   margin: 0 auto;
 }
 
@@ -478,7 +478,7 @@ h2::after {
   justify-content: center;
   gap: 2rem;
   margin-top: 3rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap; /* 2. CHANGED to nowrap (or simply remove this line) */
 }
 
 .contact-item {
@@ -488,6 +488,7 @@ h2::after {
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   transition: all 0.3s ease;
   min-width: 200px;
+  flex: 1; /* Optional: This ensures all items stretch evenly in the row */
 }
 
 .contact-item:hover {
